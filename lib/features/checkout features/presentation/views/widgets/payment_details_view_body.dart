@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:payment/core/utils/assets.dart';
+import 'package:payment/core/widgets/custom_button.dart';
+import 'package:payment/features/checkout%20features/presentation/views/widgets/custom_credit_card.dart';
 import 'package:payment/features/checkout%20features/presentation/views/widgets/payment_methods.dart';
 
 import 'payment_method_item.dart';
@@ -10,8 +12,24 @@ class PaymentDetailsViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      children: [PaymentMethods()],
+    return const CustomScrollView(
+      slivers: [
+        SliverToBoxAdapter(
+          child: PaymentMethods(),
+        ),
+        SliverToBoxAdapter(
+          child: CustomCreditCard(),
+        ),
+        SliverFillRemaining(
+          hasScrollBody: false,
+          child: Align(
+              alignment: Alignment.bottomCenter,
+              child: Padding(
+                padding: EdgeInsets.only(bottom: 16, left: 16, right: 16),
+                child: CustomButton(),
+              )),
+        )
+      ],
     );
   }
 }
