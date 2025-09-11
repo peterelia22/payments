@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:payment/core/utils/assets.dart';
-import 'package:payment/core/utils/styles.dart';
-import 'package:payment/features/checkout%20features/presentation/views/widgets/payment_item_info.dart';
-import 'package:payment/features/checkout%20features/presentation/views/widgets/total_price.dart';
+import 'package:payments/core/utils/styles.dart';
 
 import 'card_info_widget.dart';
+import 'payment_item_info.dart';
+import 'total_price.dart';
 
 class ThankYouCard extends StatelessWidget {
-  const ThankYouCard({
-    super.key,
-  });
+  const ThankYouCard({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,59 +16,37 @@ class ThankYouCard extends StatelessWidget {
       width: double.infinity,
       decoration: ShapeDecoration(
         color: const Color(0xFFEDEDED),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       ),
       child: Padding(
         padding: const EdgeInsets.only(top: 50 + 16, left: 22, right: 22),
         child: Column(
           children: [
-            const Text('Thank you!',
-                textAlign: TextAlign.center, style: AppStyles.style25),
+            const Text(
+              'Thank you!',
+              textAlign: TextAlign.center,
+              style: AppStyles.style25,
+            ),
             Text(
               'Your transaction was successful',
               textAlign: TextAlign.center,
               style: AppStyles.style20,
             ),
-            const SizedBox(
-              height: 42,
-            ),
-            const PaymentItemInfo(
-              title: 'Date',
-              subtitle: '01/24/2023',
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            const PaymentItemInfo(
-              title: 'Time',
-              subtitle: '10:15 AM',
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            const PaymentItemInfo(
-              title: 'To',
-              subtitle: 'Sam Louis',
-            ),
-            const Divider(
-              height: 60,
-              thickness: 2,
-            ),
+            const SizedBox(height: 42),
+            const PaymentItemInfo(title: 'Date', subtitle: '01/24/2023'),
+            const SizedBox(height: 20),
+            const PaymentItemInfo(title: 'Time', subtitle: '10:15 AM'),
+            const SizedBox(height: 20),
+            const PaymentItemInfo(title: 'To', subtitle: 'Sam Louis'),
+            const Divider(height: 60, thickness: 2),
             const TotalPrice(title: 'Total', amount: '\$50.97'),
-            const SizedBox(
-              height: 30,
-            ),
+            const SizedBox(height: 30),
             const CardInfoWidget(),
             Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Icon(
-                  FontAwesomeIcons.barcode,
-                  size: 64,
-                ),
+                Icon(FontAwesomeIcons.barcode, size: 64),
                 Container(
                   width: 113,
                   height: 58,
@@ -82,12 +57,15 @@ class ThankYouCard extends StatelessWidget {
                     ),
                   ),
                   child: Center(
-                    child: Text('PAID',
-                        textAlign: TextAlign.center,
-                        style: AppStyles.style24
-                            .copyWith(color: Color(0xFF34A853))),
+                    child: Text(
+                      'PAID',
+                      textAlign: TextAlign.center,
+                      style: AppStyles.style24.copyWith(
+                        color: Color(0xFF34A853),
+                      ),
+                    ),
                   ),
-                )
+                ),
               ],
             ),
             SizedBox(

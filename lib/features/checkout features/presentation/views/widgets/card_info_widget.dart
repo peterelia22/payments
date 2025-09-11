@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:payment/core/utils/assets.dart';
+import 'package:payments/core/utils/assets.dart';
 
 class CardInfoWidget extends StatelessWidget {
-  const CardInfoWidget({
-    super.key,
-  });
+  const CardInfoWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +12,7 @@ class CardInfoWidget extends StatelessWidget {
       height: 73,
       decoration: ShapeDecoration(
         color: Colors.white,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       ),
       child: Row(
         children: [
@@ -24,9 +20,7 @@ class CardInfoWidget extends StatelessWidget {
             padding: const EdgeInsets.only(left: 23),
             child: SvgPicture.asset(Assets.assetsImagesMastercard),
           ),
-          const SizedBox(
-            width: 23,
-          ),
+          const SizedBox(width: 23),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,

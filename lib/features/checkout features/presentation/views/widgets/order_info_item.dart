@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:payment/core/utils/styles.dart';
+import 'package:payments/core/utils/styles.dart';
 
 class OrderInfoItem extends StatelessWidget {
   final String title, amount;
@@ -11,14 +11,8 @@ class OrderInfoItem extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          title,
-          style: AppStyles.style18,
-        ),
-        Text(
-          amount,
-          style: AppStyles.style18,
-        )
+        Text(title, style: AppStyles.style18),
+        Text(amount, style: AppStyles.style18),
       ],
     );
   }

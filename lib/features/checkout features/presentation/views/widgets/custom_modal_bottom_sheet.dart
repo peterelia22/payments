@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:payment/core/widgets/custom_button.dart';
-import 'package:payment/features/checkout%20features/presentation/views/widgets/payment_methods.dart';
+import 'package:payments/core/widgets/custom_button.dart';
+
+import 'payment_methods.dart';
 
 class CustomModalBottomSheet extends StatelessWidget {
   const CustomModalBottomSheet({super.key});
@@ -12,14 +13,10 @@ class CustomModalBottomSheet extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          SizedBox(
-            height: 16,
-          ),
+          SizedBox(height: 16),
           PaymentMethods(),
-          SizedBox(
-            height: 32,
-          ),
-          CustomButton(title: 'Continue')
+          SizedBox(height: 32),
+          CustomButton(title: 'Continue'),
         ],
       ),
     );

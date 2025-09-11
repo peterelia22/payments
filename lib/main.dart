@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:payment/features/checkout%20features/presentation/views/my_cart.dart';
+
+import 'features/checkout features/presentation/views/my_cart.dart';
 
 void main() {
   runApp(const CheckOutApp());
