@@ -29,4 +29,16 @@ class StripeService {
   Future presentPaymentSheet() async {
     await Stripe.instance.presentPaymentSheet();
   }
+
+  Future makePayment({
+    required PaymentIntentInputModel paymentIntentInputModel,
+  }) async {
+    final paymentIntentModel = await createPaymentIntent(
+      paymentIntentInputModel,
+    );
+    await initPaymentsheet(
+      paymentIntentClientSecret: paymentIntentModel.clientSecret!,
+    );
+    await presentPaymentSheet();
+  }
 }
