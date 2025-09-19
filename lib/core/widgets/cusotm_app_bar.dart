@@ -8,9 +8,6 @@ AppBar BuildAppBar({final String? title}) {
     elevation: 0,
     backgroundColor: Colors.transparent,
     centerTitle: true,
-    title: Text(
-      title ?? "",
-      style: AppStyles.style25,
-    ),
+    title: Text(title ?? "", style: AppStyles.style25),
   );
 }

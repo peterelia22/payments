@@ -5,7 +5,8 @@ import 'package:payments/core/utils/assets.dart';
 import 'payment_method_item.dart';
 
 class PaymentMethods extends StatefulWidget {
-  const PaymentMethods({super.key});
+  const PaymentMethods({super.key, required this.onMethodSelected});
+  final ValueChanged<int> onMethodSelected;
 
   @override
   State<PaymentMethods> createState() => _PaymentMethodsState();
@@ -29,6 +30,7 @@ class _PaymentMethodsState extends State<PaymentMethods> {
           return GestureDetector(
             onTap: () {
               selectedIndex = index;
+              widget.onMethodSelected(index);
               setState(() {});
             },
             child: PaymentMethodItem(

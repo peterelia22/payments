@@ -24,18 +24,14 @@ class ThankYouViewBody extends StatelessWidget {
             right: 20 + 8,
             child: const CustomDashedLine(),
           ),
-          CustomHalfCircle(
-            left: -20,
-          ),
-          CustomHalfCircle(
-            right: -20,
-          ),
+          CustomHalfCircle(left: -20),
+          CustomHalfCircle(right: -20),
           const Positioned(
             top: -50,
             left: 0,
             right: 0,
             child: CustomCheckedIcon(),
-          )
+          ),
         ],
       ),
     );

@@ -9,7 +9,8 @@ import '../../../data/models/payment_intent_input_model.dart';
 import '../../manager/payment_cubit/payment_cubit.dart';
 
 class CustomButtonBlocConsumer extends StatelessWidget {
-  const CustomButtonBlocConsumer({super.key});
+  const CustomButtonBlocConsumer({super.key, required this.selectedMethod});
+  final int selectedMethod;
 
   @override
   Widget build(BuildContext context) {
@@ -33,13 +34,29 @@ class CustomButtonBlocConsumer extends StatelessWidget {
       builder: (context, state) {
         return CustomButton(
           onTap: () {
-            PaymentIntentInputModel paymentIntentInputModel =
-                PaymentIntentInputModel(amount: '1000', currency: 'USD');
-            BlocProvider.of<PaymentCubit>(
-              context,
-            ).makePayment(paymentIntentInputModel: paymentIntentInputModel);
+            if (selectedMethod == 0) {
+              // Stripe (Card)
+              final paymentIntentInputModel = PaymentIntentInputModel(
+                amount: '1000',
+                currency: 'USD',
+                customerID: 'cus_T5GycdzzEYSD4q',
+              );
+              BlocProvider.of<PaymentCubit>(
+                context,
+              ).makePayment(paymentIntentInputModel: paymentIntentInputModel);
+            } else if (selectedMethod == 1) {
+              // PayPal
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('PayPal not implemented yet')),
+              );
+            } else if (selectedMethod == 2) {
+              // Apple Pay
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Apple Pay not implemented yet')),
+              );
+            }
           },
-          isLoading: state is PaymentLoading ? true : false,
+          isLoading: state is PaymentLoading,
           title: 'Continue',
         );
       },

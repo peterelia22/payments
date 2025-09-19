@@ -11,14 +11,8 @@ class TotalPrice extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          title,
-          style: AppStyles.style24,
-        ),
-        Text(
-          amount,
-          style: AppStyles.style24,
-        )
+        Text(title, style: AppStyles.style24),
+        Text(amount, style: AppStyles.style24),
       ],
     );
   }
