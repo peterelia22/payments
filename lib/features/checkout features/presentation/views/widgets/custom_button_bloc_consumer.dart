@@ -4,6 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
 import 'package:payments/core/widgets/custom_button.dart';
+import 'package:payments/features/checkout%20features/data/models/amount/amount.dart';
+import 'package:payments/features/checkout%20features/data/models/amount/details.dart';
+import 'package:payments/features/checkout%20features/data/models/item_list/item.dart';
+import 'package:payments/features/checkout%20features/data/models/item_list/item_list.dart';
 import 'package:payments/features/checkout%20features/presentation/views/thank_you.dart';
 
 import '../../../data/models/payment_intent_input_model.dart';
@@ -46,6 +50,31 @@ class CustomButtonBlocConsumer extends StatelessWidget {
                 context,
               ).makePayment(paymentIntentInputModel: paymentIntentInputModel);
             } else if (selectedMethod == 1) {
+              var amount = AmountModel(
+                total: "100",
+                currency: 'USD',
+                details: Details(
+                  shipping: "0",
+                  shippingDiscount: 0,
+                  subtotal: '100',
+                ),
+              );
+              var itemList = ItemListModel(
+                items: [
+                  ItemModel(
+                    currency: 'USD',
+                    name: 'Apple',
+                    quantity: 10,
+                    price: "4",
+                  ),
+                  ItemModel(
+                    currency: 'USD',
+                    name: 'Apple',
+                    quantity: 12,
+                    price: "5",
+                  ),
+                ],
+              );
               // PayPal
               Navigator.of(context).push(
                 MaterialPageRoute(
@@ -53,50 +82,12 @@ class CustomButtonBlocConsumer extends StatelessWidget {
                     sandboxMode: true,
                     clientId: "",
                     secretKey: "",
-                    transactions: const [
+                    transactions: [
                       {
-                        "amount": {
-                          "total": "55",
-                          "currency": "USD",
-                          "details": {
-                            "subtotal": "40",
-                            "shipping": "20",
-                            "shipping_discount": 0,
-                          },
-                        },
+                        "amount": amount.toJson(),
                         "description": "The payment transaction description.",
-                        // "payment_options": {
-                        //   "allowed_payment_method":
-                        //       "INSTANT_FUNDING_SOURCE"
-                        // },
-                        "item_list": {
-                          "items": [
-                            {
-                              "name": "Apple",
-                              "quantity": 4,
-                              "price": '5',
-                              "currency": "USD",
-                            },
-                            {
-                              "name": "Pineapple",
-                              "quantity": 5,
-                              "price": '10',
-                              "currency": "USD",
-                            },
-                          ],
 
-                          // shipping address is not required though
-                          //   "shipping_address": {
-                          //     "recipient_name": "tharwat",
-                          //     "line1": "Alexandria",
-                          //     "line2": "",
-                          //     "city": "Alexandria",
-                          //     "country_code": "EG",
-                          //     "postal_code": "21505",
-                          //     "phone": "+00000000",
-                          //     "state": "Alexandria"
-                          //  },
-                        },
+                        "item_list": itemList.toJson(),
                       },
                     ],
                     note: "Contact us for any questions on your order.",
