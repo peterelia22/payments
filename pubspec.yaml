@@ -40,6 +40,7 @@ dependencies:
   flutter_stripe: ^12.0.2
   flutter_svg: ^2.2.1
   font_awesome_flutter: ^10.9.1
+  pay_with_paymob: ^1.4.0
 
 dev_dependencies:
   flutter_lints: ^5.0.0

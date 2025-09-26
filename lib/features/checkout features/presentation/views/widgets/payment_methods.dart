@@ -16,7 +16,7 @@ class _PaymentMethodsState extends State<PaymentMethods> {
   final List<String> paymentMethods = const [
     Assets.assetsImagesCard,
     Assets.assetsImagesPaybal,
-    Assets.assetsImagesApple,
+    Assets.assetsImagesWallet,
   ];
   int selectedIndex = 0;
   @override
